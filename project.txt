@@ -1,0 +1,75 @@
+Result Managment System (RMS) 
+------------------------------------------------------------------------------------
+
+MySQL Database Design : 
+=======================
+users (as students) -> Users,
+class -> Class,
+roll -> Roll,
+registration -> Registration,
+department -> Department,
+subjects -> Subjects,
+session -> Session,
+semester -> Semester,
+profile -> Profile,
+gpa -> GPA,
+marks => Mark,
+
+
+
+
+# Database Relationship pattern
+===============================
+
+Users {
+    profile(type: hasOne);
+    class(type: hasOne);
+    roll(type: hasOne);
+    registration(type: hasOne);
+    department(type: hasOne);
+    subjects(type: hasMany);
+    session(type: hasOne);
+    semester(type: hasMany);
+    gpa(type: hasMany);
+    marks(type: hasMany);
+}
+
+Class {
+    //p// users(type: belongsToMany);
+    department(type: belongsToMany);
+    //subjects(type: hasMany);
+}
+
+Roll {
+    users(type: belongsToMany);
+    //p// registration(type: hasOne);
+    //p// session(type: hasOne);
+}
+Registration {
+    users(type: belongsToMany);
+    //p// roll(type: belongsTo);
+}
+Department {
+    users(type: belongsToMany);
+    //p// class(type: hasMany);
+}
+subjects {
+    class(type: belongsToMany);
+    //p// marks(type: hasOne);
+}
+session {
+    //p// roll(type: belongsToMany);
+    //p// semester(type: hasMany);
+}
+semester {
+    //p// session(type: belongsToMany);
+    //gpa(type: hasMany);
+}
+gpa {
+    semester(type: belongsToMany);
+    users(type: belongsTo);
+}
+marks {
+    //p// subjects(type: belongsTo);
+    //p// semester(type: belongsTo);
+}

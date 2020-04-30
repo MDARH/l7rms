@@ -82,6 +82,8 @@
             <div class="content">
                 <div class="title m-b-md">
                     Laravel
+                    <br>
+                    <a href="{{route('seed')}}">Seed</a>
                 </div>
 
                 <div class="links">

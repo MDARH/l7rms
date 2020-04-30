@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+
+
+// TEST
+Route::get('/addseed', 'DbseedController@seed')->name('seed');
+Route::get('/dep/{user}', 'DbseedController@dep')->name('dep');
+Route::get('/cls/{user}', 'DbseedController@cls')->name('cls');
