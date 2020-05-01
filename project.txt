@@ -38,12 +38,14 @@ Class {
     //p// users(type: belongsToMany);
     department(type: belongsToMany);
     //subjects(type: hasMany);
+    roll(type: hasMany);
 }
 
 Roll {
-    users(type: belongsToMany);
+    users(type: belongsTo);
     //p// registration(type: hasOne);
     //p// session(type: hasOne);
+    class(type: belongsToMany);
 }
 Registration {
     users(type: belongsToMany);

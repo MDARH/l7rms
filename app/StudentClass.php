@@ -18,4 +18,9 @@ class StudentClass extends Model
     {
         return $this->belongsToMany(\App\Department::class, 'departments_classes');
     }
+
+    public function rolls()
+    {
+        return $this->belongsToMany(\App\Roll::class, 'class_rolles');
+    }
 }

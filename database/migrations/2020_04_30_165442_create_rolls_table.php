@@ -13,9 +13,12 @@ class CreateRollsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rolls', function (Blueprint $table) {
+        Schema::create('rolls', function ( Blueprint $table ) {
             $table->id();
-            $table->integer('roll');
+            $table->foreignId('user_id');
+            $table->bigInteger('roll')->unique();
+            // Foerign KEY
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

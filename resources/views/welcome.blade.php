@@ -86,6 +86,15 @@
                     <a href="{{route('seed')}}">Seed</a>
                 </div>
 
+                @php
+                   //echo time(); as registration
+                    $dep = 3125; // 'C' for 3, 'S' for 12, 'E' for 5
+                    $session = 2021; // re-present as 2020-2021
+                    $Id = 1; // student table id
+                    $student = 10 . $Id;
+                    echo $dep . $session . $student;
+                @endphp
+
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>

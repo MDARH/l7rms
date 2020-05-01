@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRegistrationsTable extends Migration
+class ClassRoll extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateRegistrationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('registrations', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id');
+        Schema::create('class_rolles', function (Blueprint $table) {
+            $table->foreignId('student_class_id');
             $table->foreignId('roll_id');
-            $table->bigInteger('registration');
 
             // Foreign KEY
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('student_class_id')->references('id')->on('student_classes')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('roll_id')->references('id')->on('rolls')->onUpdate('cascade')->onDelete('cascade');
+
+            //Setting the Primary KEY
+            $table->primary(['student_class_id','roll_id']);
 
             $table->timestamps();
         });
@@ -34,6 +35,6 @@ class CreateRegistrationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('registrations');
+        Schema::dropIfExists('class_rolles');
     }
 }

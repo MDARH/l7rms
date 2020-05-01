@@ -15,11 +15,17 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('father');
-            $table->string('mother');
-            $table->string('gender');
-            $table->text('address');
-            $table->date('dob');
+            $table->foreignId('user_id');
+            $table->string('father')->nullable();
+            $table->string('mother')->nullable();
+            $table->string('gender')->nullable();
+            $table->longText('address')->nullable();
+            $table->string('photo')->default('student.jpg');
+            $table->date('dob')->nullable();
+
+            // Foreign KEY
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

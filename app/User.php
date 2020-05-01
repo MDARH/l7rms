@@ -38,7 +38,11 @@ class User extends Authenticatable
     ];
 
     // relations
-    // relations
+    public function profile()
+    {
+        return $this->hasOne(\App\Profile::class);
+    }
+
     public function department()
     {
         return $this->belongsToMany(\App\Department::class, 'users_departments')->withTimestamps();
@@ -47,5 +51,15 @@ class User extends Authenticatable
     public function class()
     {
         return $this->belongsToMany(\App\StudentClass::class, 'users_classes')->withTimestamps();
+    }
+    
+    public function registration()
+    {
+        return $this->hasOne(\App\Registration::class);
+    }
+
+    public function roll()
+    {
+        return $this->hasOne(\App\Roll::class, 'roll_id');
     }
 }
