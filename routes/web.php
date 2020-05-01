@@ -23,5 +23,9 @@ Route::get('/', function () {
 
 // TEST
 Route::get('/addseed', 'DbseedController@seed')->name('seed');
+Route::get('/new', 'DbseedController@multistu')->name('seed-new-stu');
 Route::get('/dep/{user}', 'DbseedController@dep')->name('dep');
 Route::get('/cls/{user}', 'DbseedController@cls')->name('cls');
+
+Route::get('/department/{dep_code}', 'DbseedController@deptocls')->name('deptocls');
+Route::get('/class/{class}', 'DbseedController@clstodep')->name('clstodep');

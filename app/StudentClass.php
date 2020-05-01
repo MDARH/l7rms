@@ -13,4 +13,9 @@ class StudentClass extends Model
     {
         return $this->belongsToMany(\App\User::class, 'users_classes');
     }
+
+    public function department()
+    {
+        return $this->belongsToMany(\App\Department::class, 'departments_classes');
+    }
 }
